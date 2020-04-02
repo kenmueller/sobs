@@ -1,7 +1,7 @@
 {
 	"name": "sobs",
 	"description": "React observables",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"main": "lib/index.js",
 	"types": "types/index.d.ts",
 	"scripts": {
@@ -25,5 +25,20 @@
 		"swiftui",
 		"react",
 		"observables"
-	]
+	],
+	"homepage": "https://github.com/kenmueller/sobs#readme",
+	"bugs": {
+		"url": "https://github.com/kenmueller/sobs/issues",
+		"email": "kenmueller0@gmail.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/kenmueller/sobs.git"
+	},
+	"author": {
+		"name": "Ken Mueller",
+		"email": "kenmueller0@gmail.com",
+		"url": "https://github.com/kenmueller"
+	},
+	"license": "MIT"
 }
