@@ -1,13 +1,11 @@
 import React, { PropsWithChildren, ReactNode, Children, isValidElement, cloneElement } from 'react'
 
-export default ({ children, ...props }: PropsWithChildren<{ object: any } | { objects: any[] }>) => {
-	const asAny = props as any
+export default ({ children, ...props }: PropsWithChildren<any>) => {
+	if (props.object === undefined)
+		return createEnvironment([props.object], children)
 	
-	if (asAny.object)
-		return createEnvironment([asAny.object], children)
-	
-	if (asAny.objects)
-		return createEnvironment(asAny.objects, children)
+	if (props.objects === undefined)
+		return createEnvironment(props.objects, children)
 	
 	throw new Error('sobs: You must specify either "object" or "objects" in an Environment')
 }
