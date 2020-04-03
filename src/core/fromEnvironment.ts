@@ -2,7 +2,7 @@ import { Component } from 'react'
 
 import observe from './observe'
 
-export default <T>(props: Record<string, any>, observableObjectType: new (...args: any[]) => T): T => {
+export default <T>(props: Record<string, any>, observableObjectType: new (...args: any[]) => T): T | null => {
 	const environment = (
 		(props instanceof Component ? props.props : props).__sobs_environment ?? []
 	).reverse()
@@ -13,5 +13,6 @@ export default <T>(props: Record<string, any>, observableObjectType: new (...arg
 			return object
 		}
 	
-	throw new Error('sobs: Unable to find environment object')
+	observe(null)
+	return null
 }

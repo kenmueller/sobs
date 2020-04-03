@@ -65,7 +65,7 @@ export function useEnvironment<T, U>(component: (environment: Record<string, any
 /**
  * Retrieve the nearest environment object with the specified type.
  * 
- * @throws If there are no environment objects with the specified type.
+ * @returns The environment object. Returns `null` if there are no environment objects with the specified type.
  * 
  * @example
  * const Component = useEnvironment((environment, props) => {
@@ -80,12 +80,12 @@ export function useEnvironment<T, U>(component: (environment: Record<string, any
  *     }
  * }
  */
-export function fromEnvironment<T>(environment: Record<string, any>, objectType: new (...args: any[]) => T): T
+export function fromEnvironment<T>(environment: Record<string, any>, objectType: new (...args: any[]) => T): T | null
 
 /**
  * Retrieve the nearest environment object with the specified type.
  * 
- * @throws If there are no environment objects with the specified type.
+ * @returns The environment object. Returns `null` if there are no environment objects with the specified type.
  * 
  * @example
  * class Component extends React.Component {
@@ -96,7 +96,7 @@ export function fromEnvironment<T>(environment: Record<string, any>, objectType:
  *     }
  * }
  */
-export function fromEnvironment<T>(component: Component, objectType: new (...args: any[]) => T): T
+export function fromEnvironment<T>(component: Component, objectType: new (...args: any[]) => T): T | null
 
 /** Creates a random UUID */
 export function newId(): string

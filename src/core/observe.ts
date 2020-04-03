@@ -12,12 +12,13 @@ const observe = (observable: any) => {
 	const forceUpdate = useForcedUpdate()
 	
 	useEffect(() => {
+		if (observable === null || observable === undefined)
+			return
+		
 		const listeners: Listeners | undefined = observable.__sobs_listeners
 		
 		if (!listeners)
-			return console.error(
-				'sobs: observe can only be used on an @ObservableObject'
-			)
+			return
 		
 		const listenerId = observable.__sobs_addListener(forceUpdate)
 		
