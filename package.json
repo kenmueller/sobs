@@ -1,7 +1,7 @@
 {
 	"name": "sobs",
 	"description": "React observables",
-	"version": "1.0.4",
+	"version": "1.1.0",
 	"main": "lib/index.js",
 	"types": "types/index.d.ts",
 	"scripts": {
@@ -24,7 +24,8 @@
 		"observableobject",
 		"swiftui",
 		"react",
-		"observables"
+		"observables",
+		"environment"
 	],
 	"homepage": "https://github.com/kenmueller/sobs#readme",
 	"bugs": {
