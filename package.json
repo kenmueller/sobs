@@ -1,11 +1,12 @@
 {
 	"name": "sobs",
 	"description": "React observables",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"main": "lib/index.js",
 	"types": "types/index.d.ts",
 	"scripts": {
-		"build": "tsc"
+		"build": "tsc",
+		"prepublishOnly": "npm run build"
 	},
 	"dependencies": {
 		"react": "^16.13.1",

@@ -1,6 +1,12 @@
 # sobs
 
-> React observables
+> React state management using observables. Modeled after SwiftUI. No boilerplate.
+
+## Table of contents
+
+- [**Install**](#install)
+- [**Introduction: Observable Objects and Published**](#introduction)
+- [**Environments & Environment Objects**](#environments)
 
 ## Install
 
@@ -13,6 +19,8 @@ npm i sobs
 ```
 
 ## Documentation
+
+### Introduction: Observable Objects and Published
 
 ### **IMPORTANT: Before you start...**
 
@@ -150,7 +158,7 @@ const App = () => {
     observe(store)
     
     return (
-        <>
+        <div>
             <button onClick={() => store.addUser(prompt('Name')!)}>
                 Add user
             </button>
@@ -159,7 +167,7 @@ const App = () => {
                     <UserRow key={user.id} user={user} />
                 ))}
             </div>
-        </>
+        </div>
     )
 }
 
@@ -182,3 +190,9 @@ const UserRow = ({ user }: { user: User }) => {
 
 ReactDOM.render(<App />, document.getElementById('root'))
 ```
+
+<div id="environments"></div>
+
+### Environments & Environment Objects
+
+Documentation coming soon
