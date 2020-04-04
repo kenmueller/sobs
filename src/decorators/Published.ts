@@ -1,2 +1,4 @@
+import { IS_PUBLISHED_KEY } from '../keys'
+
 export default (target: any, key: string): void =>
-	void (target[`__sobs_isPublished_${key}`] = true)
+	void (target[IS_PUBLISHED_KEY(key)] = true)

@@ -1,27 +1,26 @@
 import { newId } from '../utils'
+import { LISTENERS_KEY, ADD_LISTENER_KEY, REMOVE_LISTENER_KEY, DID_CHANGE_KEY, IS_PUBLISHED_KEY } from '../keys'
 
 export default (constructor: any): any =>
 	class extends constructor {
 		constructor(...args: any[]) {
 			super(...args)
 			
-			this.__sobs_listeners = {}
+			this[LISTENERS_KEY] = {}
 			
-			this.__sobs_addListener = (callback: () => void) => {
+			this[ADD_LISTENER_KEY] = (callback: () => void) => {
 				const id = newId()
 				
-				this.__sobs_listeners[id] = callback
+				this[LISTENERS_KEY][id] = callback
 				return id
 			}
 			
-			this.__sobs_removeListener = (id: string) => {
-				delete this.__sobs_listeners[id]
+			this[REMOVE_LISTENER_KEY] = (id: string) => {
+				delete this[LISTENERS_KEY][id]
 			}
 			
-			this.didChange = () => {
-				const listeners: (() => void)[] = Object.values(
-					this.__sobs_listeners
-				)
+			this[DID_CHANGE_KEY] = () => {
+				const listeners: (() => void)[] = Object.values(this[LISTENERS_KEY])
 				
 				for (const listener of listeners)
 					listener()
@@ -31,7 +30,7 @@ export default (constructor: any): any =>
 				set: (target, key: string, value) => {
 					target[key] = value
 					
-					if (target[`__sobs_isPublished_${key}`])
+					if (target[IS_PUBLISHED_KEY(key)])
 						target.didChange()
 					
 					return true

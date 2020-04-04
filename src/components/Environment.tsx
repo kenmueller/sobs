@@ -1,5 +1,7 @@
 import React, { PropsWithChildren, ReactNode, Children, isValidElement, cloneElement } from 'react'
 
+import { ENVIRONMENT_KEY } from '../keys'
+
 export default ({ children, ...props }: PropsWithChildren<any>) => {
 	if (props.object !== undefined)
 		return createEnvironment([props.object], children)
@@ -14,8 +16,8 @@ const createEnvironment = (objects: any[], children: ReactNode | undefined) => (
 	<>
 		{transformChildProps(children, props => ({
 			...props,
-			__sobs_environment: [
-				...props.__sobs_environment ?? [],
+			[ENVIRONMENT_KEY]: [
+				...props[ENVIRONMENT_KEY] ?? [],
 				...objects
 			]
 		}))}
